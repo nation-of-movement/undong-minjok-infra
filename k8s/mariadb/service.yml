@@ -1,0 +1,13 @@
+# DB 접근용 이름
+apiVersion: v1
+kind: Service
+metadata:
+  name: mariadb-svc
+  namespace: app
+spec:
+  clusterIP: None   # StatefulSet 내부 DNS
+  ports:
+    - port: 3306
+      targetPort: 3306
+  selector:
+    app: mariadb

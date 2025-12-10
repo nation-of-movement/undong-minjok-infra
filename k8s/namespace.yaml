@@ -1,0 +1,5 @@
+# 구역 나누기 - 이름 app
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app
