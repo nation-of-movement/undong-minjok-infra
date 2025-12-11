@@ -1,0 +1,7 @@
+resources:
+  - namespace.yaml
+  - backend
+  - frontend
+  - redis
+  - mariadb
+  - ingress
