@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: zkvn99/undong-frontend:latest
+          image: zkvn99/undong-minjok-client:latest
           ports:
             - containerPort: 80
           resources:
