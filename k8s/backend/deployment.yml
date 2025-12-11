@@ -17,6 +17,7 @@ spec:
       containers:
         - name: backend
           image: zkvn99/undong-minjok-api:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8888
           env:
@@ -57,3 +58,5 @@ spec:
                 configMapKeyRef:
                   name: backend-config
                   key: REDIS_PORT
+      imagePullSecrets:
+        - name: dockerhub-secret
