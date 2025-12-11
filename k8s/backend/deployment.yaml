@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: zkvn99/undong-minjok-api:latest
+          image: zkvn1103/undong-minjok-api:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8888
