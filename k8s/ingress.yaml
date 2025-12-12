@@ -1,26 +1,13 @@
-# 외부에서 들어오는 HTTP 출입구
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: app-ingress
   namespace: app
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
     - http:
         paths:
-          # 프론트엔드 라우팅
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: frontend-svc
-                port:
-                  number: 80
-
-          # 백엔드 API 라우팅
           - path: /api
             pathType: Prefix
             backend:
@@ -29,7 +16,6 @@ spec:
                 port:
                   number: 8888
 
-          # 업로드 파일 라우팅
           - path: /uploads
             pathType: Prefix
             backend:
@@ -37,3 +23,11 @@ spec:
                 name: backend-svc
                 port:
                   number: 8888
+
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend-svc
+                port:
+                  number: 80
