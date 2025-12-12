@@ -5,13 +5,15 @@ metadata:
   namespace: app
   annotations:
     nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   ingressClassName: nginx
   rules:
     - http:
         paths:
 
+          # =====================
+          # 1) API (rewrite 필요)
+          # =====================
           - path: /api(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
@@ -19,7 +21,13 @@ spec:
                 name: backend-svc
                 port:
                   number: 8888
+            pathRewrite:
+              # nginx annotation:
+              rewrite-target: /$2
 
+          # ===================
+          # 2) 업로드 파일
+          # ===================
           - path: /uploads(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
@@ -27,9 +35,13 @@ spec:
                 name: backend-svc
                 port:
                   number: 8888
+            pathRewrite:
+              rewrite-target: /$2
 
-          # 정적 파일 요청은 rewrite 하지 않기
-          - path: /(assets|favicon\.ico|.*\.js|.*\.css|.*\.png|.*\.jpg)(/|$)(.*)
+          # ===================
+          # 3) 정적 파일 요청 (rewrite X)
+          # ===================
+          - path: /assets/(.*)
             pathType: ImplementationSpecific
             backend:
               service:
@@ -37,7 +49,18 @@ spec:
                 port:
                   number: 80
 
-          # SPA 라우팅 (정규식)
+          # JavaScript/CSS 파일 (rewrite 금지)
+          - path: /(.*\.js|.*\.css|.*\.map|.*\.png|.*\.jpg|.*\.ico)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: frontend-svc
+                port:
+                  number: 80
+
+          # ===================
+          # 4) 모든 SPA 라우팅 → index.html
+          # ===================
           - path: /(.*)
             pathType: ImplementationSpecific
             backend:
