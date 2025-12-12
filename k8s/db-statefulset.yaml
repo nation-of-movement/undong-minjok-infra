@@ -33,17 +33,17 @@ spec:
                   name: mariadb-secret
                   key: MARIA_DATABASE
 
-            - name: USER
+            - name: MYSQL_USER
               valueFrom:
                 secretKeyRef:
                   name: mariadb-secret
-                  key: USER
+                  key: MYSQL_USER
 
-            - name: PASSWORD
+            - name: MYSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: mariadb-secret
-                  key: PASSWORD
+                  key: MYSQL_PASSWORD
 
           volumeMounts:
             - name: mariadb-data
