@@ -11,10 +11,29 @@ spec:
   rules:
     - http:
         paths:
-          - path: /
+          # 프론트엔드 라우팅
+          - path: /(.*)
             pathType: Prefix
             backend:
               service:
                 name: frontend-svc
                 port:
                   number: 80
+
+          # 백엔드 API 라우팅
+          - path: /api/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-svc
+                port:
+                  number: 8888
+
+          # 업로드 파일 라우팅
+          - path: /uploads/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-svc
+                port:
+                  number: 8888
