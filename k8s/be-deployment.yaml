@@ -58,5 +58,10 @@ spec:
                 configMapKeyRef:
                   name: backend-config
                   key: REDIS_PORT
+            - name: JWT_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secret
+                  key: JWT_SECRET_KEY
       imagePullSecrets:
         - name: dockerhub-secret

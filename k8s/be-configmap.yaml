@@ -5,7 +5,7 @@ metadata:
   name: backend-config
   namespace: app
 data:
-  SPRING_PROFILES_ACTIVE: "prod"
+  SPRING_PROFILES_ACTIVE: "dev"
   DB_HOST: "mariadb-svc"
   DB_PORT: "3306"
   REDIS_HOST: "redis-svc"
