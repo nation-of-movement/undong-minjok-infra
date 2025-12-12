@@ -5,7 +5,7 @@ metadata:
   name: mariadb-svc
   namespace: app
 spec:
-  clusterIP: None   # StatefulSet 내부 DNS
+  clusterIP: ""
   ports:
     - port: 3306
       targetPort: 3306
