@@ -27,6 +27,18 @@ spec:
                   name: backend-config
                   key: SPRING_PROFILES_ACTIVE
 
+            - name: GMAIL_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-secret
+                  key: GMAIL_USERNAME
+
+            - name: GMAIL_APP_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-secret
+                  key: GMAIL_APP_PASSWORD
+
             - name: DB_HOST
               valueFrom:
                 configMapKeyRef:
