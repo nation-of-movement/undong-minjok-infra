@@ -21,7 +21,7 @@ spec:
                   number: 80
 
           # 백엔드 API 라우팅
-          - path: /api/(.*)
+          - path: /api
             pathType: Prefix
             backend:
               service:
@@ -30,7 +30,7 @@ spec:
                   number: 8888
 
           # 업로드 파일 라우팅
-          - path: /uploads/(.*)
+          - path: /uploads
             pathType: Prefix
             backend:
               service:
