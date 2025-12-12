@@ -26,6 +26,25 @@ spec:
                 secretKeyRef:
                   name: mariadb-secret
                   key: ROOT_PASSWORD
+            # 자동 생성 DB
+            - name: MYSQL_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: mariadb-secret
+                  key: MARIA_DATABASE
+
+            - name: USER
+              valueFrom:
+                secretKeyRef:
+                  name: mariadb-secret
+                  key: USER
+
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mariadb-secret
+                  key: PASSWORD
+
           volumeMounts:
             - name: mariadb-data
               mountPath: /var/lib/mysql
