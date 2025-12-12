@@ -3,29 +3,36 @@ kind: Ingress
 metadata:
   name: app-ingress
   namespace: app
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   ingressClassName: nginx
   rules:
     - http:
         paths:
-          - path: /api
-            pathType: Prefix
+
+          # ▶ API 라우팅
+          - path: /api(/|$)(.*)
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: backend-svc
                 port:
                   number: 8888
 
-          - path: /uploads
-            pathType: Prefix
+          # ▶ 파일 업로드 라우팅
+          - path: /uploads(/|$)(.*)
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: backend-svc
                 port:
                   number: 8888
 
-          - path: /
-            pathType: Prefix
+          # ▶ 프론트엔드 SPA 라우팅 (Vue)
+          - path: /(.*)
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: frontend-svc
