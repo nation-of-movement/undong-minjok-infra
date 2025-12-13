@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: zkvn1103/undong-minjok-client:latest
-          imagePullPolicy: Always
+          image: zkvn1103/undong-minjok-client:34
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
           resources:
