@@ -62,17 +62,17 @@ spec:
                   name: backend-secret
                   key: TOSS-BASE-KEY
 
-            - name: TOSS-SUCCESS-KEY
+            - name: TOSS-SUCCESS-KEY-DEV
               valueFrom:
                 secretKeyRef:
                   name: backend-secret
-                  key: TOSS-SUCCESS-KEY
+                  key: TOSS-SUCCESS-KEY-DEV
 
-            - name: TOSS-FAIL-KEY
+            - name: TOSS-FAIL-KEY-DEV
               valueFrom:
                 secretKeyRef:
                   name: backend-secret
-                  key: TOSS-FAIL-KEY
+                  key: TOSS-FAIL-KEY-DEV
 
             - name: DB_HOST
               valueFrom:
