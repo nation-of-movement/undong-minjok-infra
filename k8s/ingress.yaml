@@ -28,15 +28,13 @@ spec:
           # ===================
           # 2) 업로드 파일
           # ===================
-          - path: /uploads(/|$)(.*)
-            pathType: ImplementationSpecific
+          - path: /uploads
+            pathType: Prefix
             backend:
               service:
                 name: backend-svc
                 port:
                   number: 8888
-            pathRewrite:
-              rewrite-target: /$2
 
           # ===================
           # 3) 정적 파일 요청 (rewrite X)
