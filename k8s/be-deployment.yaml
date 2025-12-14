@@ -44,6 +44,36 @@ spec:
                   name: backend-secret
                   key: GMAIL_APP_PASSWORD
 
+            - name: TOSS-SECRET-KEY
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secret
+                  key: TOSS-SECRET-KEY
+
+            - name: TOSS-CLIENT-KEY
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secret
+                  key: TOSS-CLIENT-KEY
+
+            - name: TOSS-BASE-KEY
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secret
+                  key: TOSS-BASE-KEY
+
+            - name: TOSS-SUCCESS-KEY
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secret
+                  key: TOSS-SUCCESS-KEY
+
+            - name: TOSS-FAIL-KEY
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secret
+                  key: TOSS-FAIL-KEY
+
             - name: DB_HOST
               valueFrom:
                 configMapKeyRef:
