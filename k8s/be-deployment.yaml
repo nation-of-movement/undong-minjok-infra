@@ -56,11 +56,11 @@ spec:
                   name: backend-secret
                   key: TOSS-CLIENT-KEY
 
-            - name: TOSS-BASE-KEY
+            - name: TOSS-BASE-URL
               valueFrom:
                 secretKeyRef:
                   name: backend-secret
-                  key: TOSS-BASE-KEY
+                  key: TOSS-BASE-URL
 
             - name: TOSS-SUCCESS-KEY-DEV
               valueFrom:
