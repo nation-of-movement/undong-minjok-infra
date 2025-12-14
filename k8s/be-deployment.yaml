@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: zkvn1103/undong-minjok-api:31
+          image: zkvn1103/undong-minjok-api:37
           imagePullPolicy: IfNotPresent
           volumeMounts:
             - name: backend-storage
