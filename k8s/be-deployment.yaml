@@ -18,6 +18,11 @@ spec:
         - name: backend
           image: zkvn1103/undong-minjok-api:latest
           imagePullPolicy: Always
+          volumeMounts:
+            - name: backend-storage
+              mountPath: /app/uploads
+            - name: backend-storage
+              mountPath: /app/logs
           ports:
             - containerPort: 8888
           env:
@@ -77,3 +82,8 @@ spec:
                   key: JWT_SECRET_KEY
       imagePullSecrets:
         - name: dockerhub-secret
+
+      volumes:
+        - name: backend-storage
+          persistentVolumeClaim:
+            claimName: backend-pvc
